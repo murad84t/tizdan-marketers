@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>لوحة login | Tizdan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <script src="/static/js/common.js" defer></script>
+</head>
+<body>
+  <div class="login-container">
+    <h2>لوحة login إلى نظام تزدان</h2>
+    <form method="POST">
+      <label for="username">اسم المستخدم</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">كلمة المرور</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit">دخول</button>
+    </form>
+    <div class="lang-switch">
+      <label>اختر اللغة:</label>
+      <select onchange="changeLang(this)">
+        <option value="ar">العربية</option>
+        <option value="en">English</option>
+      </select>
+      <div class="mode-toggle">
+        <span id="mode-icon">🌞</span>
+        <label><input type="checkbox" id="mode-toggle" onchange="toggleMode(this)"> الوضع الليلي</label>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
