@@ -1,1 +1,28 @@
-...
+{% extends 'base.html' %}
+{% block content %}
+<h3>Admin dashboard</h3>
+
+<h5 class="mt-4">Request money from marketer</h5>
+<form method="post" class="row g-3">
+  {{ tform.hidden_tag() }}
+  <div class="col-md-4">
+    {{ tform.marketer.label }} {{ tform.marketer(class="form-select") }}
+  </div>
+  <div class="col-md-4">
+    {{ tform.amount.label }} {{ tform.amount(class="form-control") }}
+  </div>
+  <div class="col-md-4 align-self-end">
+    <button class="btn btn-danger w-100">Record Withdraw</button>
+  </div>
+</form>
+
+<h5 class="mt-5">Balances (01 Jan 2025 → today)</h5>
+<table class="table table-striped">
+  <thead><tr><th>Marketer</th><th>Balance (£)</th></tr></thead>
+  <tbody>
+    {% for m in marketers %}
+      <tr><td>{{ m.name }}</td><td>{{ summary[m.name]|round(2) }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,1 +1,20 @@
-...
+{% extends 'base.html' %}
+{% block content %}
+<h3>Your transactions ({{ start }} → {{ end }})</h3>
+<a class="btn btn-outline-success mb-3"
+   href="{{ url_for('download_excel', start=start, end=end) }}">Download Excel</a>
+<table class="table table-bordered">
+  <thead><tr><th>Date</th><th>Type</th><th>Amount (£)</th></tr></thead>
+  <tbody>
+  {% for t in txs %}
+    <tr>
+      <td>{{ t.timestamp.date() }}</td>
+      <td class="{{ 'text-success' if t.amount>0 else 'text-danger' }}">
+        {{ 'Deposit' if t.amount>0 else 'Withdraw' }}
+      </td>
+      <td>{{ t.amount|abs|round(2) }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
